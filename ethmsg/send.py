@@ -7,11 +7,15 @@ import json
 import web3
 from string import Template
 
-from web3 import Web3, middleware
+from web3 import Web3
 from solc import compile_source
-from web3.contract import ConciseContract
+from solc import install_solc
 
 def send(endpoint, address, message):
+    solcexec = Path(str(Path.home()) + "/.py-solc/solc-v0.4.25/bin/solc")
+    if solcexec.is_file() == False:
+        install_solc('v0.4.25')
+    
     w3 = Web3(Web3.HTTPProvider(endpoint))
     private_key = os.environ["ETH_MSG_PRIVATE_KEY"]
     
