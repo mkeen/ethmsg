@@ -3,15 +3,15 @@
 ## Prep Your System
 `sudo apt update`  
 `sudo apt-get install build-essential checkinstall`  
-`sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev`
 
 ## Install Python 3.5 (unless you already have it)
+`sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev`  
 `cd /usr/src`  
 `wget https://www.python.org/ftp/python/3.5.6/Python-3.5.6.tgz`  
 `sudo tar xzf Python-3.5.6.tgz`  
 `cd Python-3.5.6`  
 `sudo ./configure --enable-optimizations`  
-`sudo make install`
+`sudo make install`  
 `cd ~`
 
 ## Clone the repo
