@@ -1,6 +1,6 @@
 # A command line tool for persisting messages on the Ethereum blockchain forever
 
-## Prep Your System
+## Prep Your System (Ubuntu 14.04)
 `sudo apt update`  
 `sudo apt-get install build-essential checkinstall`  
 
