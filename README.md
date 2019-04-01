@@ -2,7 +2,7 @@
 
 ## Prep Your System (Ubuntu 14.04)
 `sudo apt update`  
-`sudo apt-get install build-essential checkinstall git software-properties-common`  
+`sudo apt-get install build-essential checkinstall git software-properties-common cmake`  
 
 ## Install Python 3.5 (unless you already have it)
 `sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev`  
