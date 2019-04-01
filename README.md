@@ -52,5 +52,9 @@
 ## Use
 
 Either set `ETH_MSG_PRIVATE_KEY` environment variable or prefix command. Either sign up for infura or set up local eth endpoint or use VPC. Load up an account with some ether and reference it with address arg (replace address below), or wait for prompt. Simple example:
-  
-`ETH_MSG_PRIVATE_KEY=_PRIV_KEY_HERE_ ethmsg --endpoint 'https://rinkeby.infura.io/v3/endpoint_id_here --message helloooo --address 0x2f516689075daC29608a34C80880f15b30A5B59F`
+
+### Send Message
+`ETH_MSG_PRIVATE_KEY=_PRIV_KEY_HERE_ ethmsg --endpoint 'https://rinkeby.infura.io/v3/endpoint_id_here --message helloooo
+
+### Retrieve Message
+`ETH_MSG_PRIVATE_KEY=_PRIV_KEY_HERE_ ethrd --endpoint 'https://rinkeby.infura.io/v3/endpoint_id_here --contract CONTRACT_ID_HERE_FROM_ABOVE_SEND_COMMAND
