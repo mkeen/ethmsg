@@ -15,7 +15,18 @@
 `cd ~`  
 
 ## Install Solidity 0.4.25 (unless you already have it)
-`sudo apt-get install cmake libboost-all-dev`  
+### Install Cmake v3
+`cd /usr/src`  
+`wget https://github.com/Kitware/CMake/releases/download/v3.14.1/cmake-3.14.1.tar.gz`  
+`tar -xvzf cmake-3.14.1.tar.gz`  
+`cd cmake-3.14.1/`  
+`./configure`  
+`make`  
+`make install`  
+`cd ~`  
+
+### Install Solc
+`sudo apt-get install libboost-all-dev`  
 `wget https://github.com/ethereum/solidity/archive/v0.4.25.tar.gz`  
 `tar -xvzf v0.4.25.tar.gz`  
 `cd solidity-0.4.25/`  
