@@ -2,7 +2,19 @@
 
 ## Prep Your System (Ubuntu 14.04)
 `sudo apt update`  
-`sudo apt-get install build-essential checkinstall git software-properties-common cmake`  
+`sudo apt-get install build-essential checkinstall git`  
+
+## Install Solidity 0.4.25 (unless you already have it)
+`sudo apt-get install cmake libboost-all-dev`  
+`wget https://github.com/ethereum/solidity/archive/v0.4.25.tar.gz`  
+`tar -xvzf v0.4.25.tar.gz`  
+`cd solidity-0.4.25/`  
+`./scripts/install_deps.sh`  
+`echo ca82a6dff817ec66f44342007202690a93763949 > commit_hash.txt`  
+`mkdir build && cd build`  
+`cmake .. && make`  
+`mv lllc/lllc /usr/bin/`  
+`mv solc/solc /usr/bin/`
 
 ## Install Python 3.5 (unless you already have it)
 `sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev`  
