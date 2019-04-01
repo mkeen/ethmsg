@@ -1,32 +1,34 @@
 import os
 from pathlib import Path
 
-os.environ["SOLC_BINARY"] = str(Path.home()) + "/.py-solc/solc-v0.4.25/bin/solc"
-
 import json
 import web3
 from string import Template
 
+from eth_account import Account
 from web3 import Web3
 from solc import compile_source
-from solc import install_solc
 
-def send(endpoint, address, message):
-    solcexec = Path(str(Path.home()) + "/.py-solc/solc-v0.4.25/bin/solc")
-    if solcexec.is_file() == False:
-        install_solc('v0.4.25')
-    
+def send(endpoint, message):
     w3 = Web3(Web3.HTTPProvider(endpoint))
+
+    account = Account()
+    
     private_key = os.environ["ETH_MSG_PRIVATE_KEY"]
+    address = account.privateKeyToAccount(private_key).address
     
     contract_source_code = '''
     pragma solidity ^0.4.21;
     
     contract Message {
-      string public message;
-    
-      function message() public {
-        message = '$message';
+      string public text;
+
+      function Message() public {
+        text = '$message';
+      }
+
+      function getText() public returns(string) {
+        return text;
       }
     }
     '''
@@ -38,6 +40,10 @@ def send(endpoint, address, message):
     nonce = w3.eth.getTransactionCount(address, 'pending')
 
     Message = w3.eth.contract(abi=contract_interface['abi'], bytecode=contract_interface['bin'])
+
+    text_file = open("/tmp/fin.json", "w")
+    text_file.write("%s" % json.dumps(contract_interface['abi']))
+    text_file.close()
     
     tx = Message.constructor().buildTransaction({
         'from': address,
@@ -50,5 +56,11 @@ def send(endpoint, address, message):
     tx_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
     receipt = w3.eth.waitForTransactionReceipt(tx_hash, 10000)
 
+    receipt_data = w3.eth.getTransactionReceipt(tx_hash)
+    
     print("Message saved to contract:")
-    print(w3.eth.getTransactionReceipt(tx_hash)['contractAddress'])
+    print(receipt_data['contractAddress'])
+
+    print("Transaction hash:")
+    print(tx_hash.hex())
+

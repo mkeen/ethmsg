@@ -10,8 +10,8 @@ setuptools.setup(
     long_description="A simple Ethereum message sender",
     url="https://github.com/mkeen/ethmsg",
     packages=['ethmsg'],
-    install_requires=['click', 'web3', 'py-solc', 'eth-tester'],
-    scripts=['bin/ethmsg'],
+    install_requires=['click', 'web3', 'py-solc', 'eth-tester', 'eth-account'],
+    scripts=['bin/ethmsg', 'bin/ethrd'],
     classifiers=[
         "Programming Language :: Python :: 3",
     ],

@@ -5,10 +5,10 @@ import ethmsg
 @click.command()
 
 @click.option('--endpoint', default='https://localhost:8545', help='Ethereum JSON-RPC Endpoint')
-@click.option('--message', prompt='Message', help='Message to save to eth blockchain')
+@click.option('--contract', prompt='Contract Address', help='Smart contract address')
 
-def default(endpoint, message):
-    ethmsg.send(endpoint, message)
+def default(endpoint, contract):
+    ethmsg.read(endpoint, contract)
 
 if __name__ == '__main__':
     default()
